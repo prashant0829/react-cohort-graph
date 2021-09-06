@@ -14,7 +14,7 @@ const renderValue = (props) => { //label and cell formatters
     const {isTotal, isLabel, isDate, valueType, formatter} = props;
     if(typeof formatter === 'function'){
         const { formatter, ...rest } = props;
-        return formatter(rest);
+        return formatter(rest, "VALUE");
     }
     return (isTotal || isLabel || isDate) ? props[VALUE] : (valueType === PERCENT ? `${props[PERCENT]} %` : props[VALUE]);
 };
@@ -23,7 +23,7 @@ const renderHeader = props => { //header formatter
     const { formatter, label} = props;
     if(typeof formatter === 'function'){
         const { formatter, ...rest } = props;
-        return formatter(rest);
+        return formatter(rest, "LABLE");
     }
     return label;
 };
